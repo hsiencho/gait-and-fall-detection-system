@@ -1,0 +1,22 @@
+# Environment variables
+.env
+
+# Python cache & virtual environment
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.pytest_cache/
+
+# Runtime media & output cache
+imgcache/
+*.jpg
+*.png
+*.mp4
+output.txt
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
