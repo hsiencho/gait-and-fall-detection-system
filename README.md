@@ -58,15 +58,15 @@ The system adopts a hybrid edge-cloud architecture:
 <table>
   <tr>
     <td align="center" valign="bottom">
-      <img src="assets/results_fall_alert.png" alt="Fall Alert (LINE Push)" height="350"><br>
+      <img src="assets/results_fall_alert.png" alt="Fall Alert (LINE Push)" height="492"><br>
       <b>Fall Alert (LINE Push)</b>
     </td>
     <td align="center" valign="bottom">
-      <img src="assets/results_gait_analysis.png" alt="Gait Analysis (LINE Reply)" height="350"><br>
+      <img src="assets/results_gait_analysis.png" alt="Gait Analysis (LINE Reply)" height="492"><br>
       <b>Gait Analysis (LINE Reply)</b>
     </td>
     <td align="center" valign="bottom">
-      <img src="assets/results_dashboard.png" alt="Dashboard (Node-RED)" height="350"><br>
+      <img src="assets/results_dashboard.png" alt="Dashboard (Node-RED)" height="492"><br>
       <b>Dashboard (Node-RED)</b>
     </td>
   </tr>
@@ -76,13 +76,13 @@ The system adopts a hybrid edge-cloud architecture:
 
 **Node-RED System Workflow**
 
-<img src="assets/nodered_workflow_1.png" alt="Node-RED System Workflow" height="300">
+<img src="assets/nodered_workflow_1.png" alt="Node-RED System Workflow" width="800">
 
-<img src="assets/nodered_workflow_2.png" alt="Node-RED System Workflow" height="300">
+<img src="assets/nodered_workflow_2.png" alt="Node-RED System Workflow" width="800">
 
 **Node-RED Emergency Alert System**
 
-<img src="assets/nodered_workflow_3.png" alt="Node-RED Emergency Alert System" height="300">
+<img src="assets/nodered_workflow_3.png" alt="Node-RED Emergency Alert System" width="800">
 
 ---
 
