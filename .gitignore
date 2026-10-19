@@ -1,22 +1,71 @@
-# Environment variables
+# ==========================================
+# 1. Credentials & Sensitive Secrets
+# ==========================================
 .env
+.env.local
+*.pem
+*.key
 
-# Python cache & virtual environment
+# ==========================================
+# 2. Runtime Cache & Generated Media
+# ==========================================
+# Image cache directory
+imgcache/
+imgcache/*
+
+# Large test videos and log text outputs
+*.mp4
+*.avi
+*.mov
+output.txt
+
+# General image captures (temporary screenshots)
+*.jpg
+*.jpeg
+*.png
+
+# ==========================================
+# 3. Whitelist: Preserve Documentation Assets
+# ==========================================
+# Allow images in the assets folder for README documentation
+!assets/
+!assets/**
+!.gitkeep
+
+# ==========================================
+# 4. Python Bytecode & Virtual Environments
+# ==========================================
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+env/
 venv/
-.pytest_cache/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Runtime media & output cache
-imgcache/
-*.jpg
-*.png
-*.mp4
-output.txt
-
-# Editor & OS files
+# ==========================================
+# 5. IDE & OS Configuration Files
+# ==========================================
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 .DS_Store
 Thumbs.db
+desktop.ini
