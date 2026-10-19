@@ -1,0 +1,931 @@
+[
+    {
+        "id": "0fcc97ccaa6838e6",
+        "type": "tab",
+        "label": "Fall Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "149afda867eafae3",
+        "type": "tab",
+        "label": "Gait Flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8e8eac399dac53ab",
+        "type": "tab",
+        "label": "Data Generator",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "711aa1fa1f1568ea",
+        "type": "tab",
+        "label": "LINE Chart Bot",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a41f143a12bdb7ad",
+        "type": "group",
+        "z": "8e8eac399dac53ab",
+        "name": "歷史數據產生器",
+        "style": {
+            "stroke": "#999999",
+            "fill": "none",
+            "fill-opacity": "1",
+            "label": true,
+            "color": "#000000"
+        },
+        "nodes": [
+            "57896f50c953fd90",
+            "8dcbb2cc63ef172a",
+            "43090241cf1b2317",
+            "0b310d30db600533"
+        ],
+        "x": 114,
+        "y": 99
+    },
+    {
+        "id": "mongo_config_local",
+        "type": "mongodb",
+        "hostname": "127.0.0.1",
+        "connectOptions": "",
+        "port": "27017",
+        "db": "gait_analysis_db",
+        "name": "Local MongoDB"
+    },
+    {
+        "id": "mqtt_broker_local",
+        "type": "mqtt-broker",
+        "name": "Local Mosquitto",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "3b1681520289090d",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "7d471b52a5c2fdb6",
+        "type": "ui_tab",
+        "name": "AIoT Dashboard",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "cbec0d2af6e0ee97",
+        "type": "ui_group",
+        "name": "Gait Health Monitor",
+        "tab": "7d471b52a5c2fdb6",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "http_in_fall",
+        "type": "http in",
+        "z": "0fcc97ccaa6838e6",
+        "name": "HTTP Input (fall)",
+        "url": "/fall_alert",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 300,
+        "y": 760,
+        "wires": [
+            [
+                "json_parse_fall"
+            ]
+        ]
+    },
+    {
+        "id": "json_parse_fall",
+        "type": "json",
+        "z": "0fcc97ccaa6838e6",
+        "name": "Parse Fall JSON",
+        "property": "payload",
+        "action": "str",
+        "pretty": true,
+        "x": 510,
+        "y": 760,
+        "wires": [
+            [
+                "fall_router"
+            ]
+        ]
+    },
+    {
+        "id": "fall_router",
+        "type": "function",
+        "z": "0fcc97ccaa6838e6",
+        "name": "Router (User ID)",
+        "func": "if (typeof msg.payload === 'string') {\n    try {\n        msg.payload = JSON.parse(msg.payload);\n    } catch(e) {\n        node.error('JSON format error: ' + msg.payload);\n        return null;\n    }\n}\nnode.warn(msg.payload);\n\nlet uid = msg.payload.user_id;\nif (uid === 'U001') {\n    return [msg, msg, null];\n} else if (uid === 'U002') {\n    return [msg, null, msg];\n} else {\n    return [null, null, null];\n}",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 760,
+        "wires": [
+            [
+                "format_line_u1"
+            ],
+            [
+                "format_line_u2"
+            ],
+            [
+                "format_line_u3"
+            ]
+        ]
+    },
+    {
+        "id": "format_line_u1",
+        "type": "function",
+        "z": "0fcc97ccaa6838e6",
+        "name": "User: Doctor",
+        "func": "const LINE_USER_ID = env.get(\"LINE_DOCTOR_USER_ID\") || \"\";\nconst LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + LINE_TOKEN\n};\n\nvar data = msg.payload;\n\nmsg.payload = {\n    to: LINE_USER_ID,\n    messages: [\n        {\n            type: 'text',\n            text: `⚠️ ALERT: FALL DETECTED\\n👤 Name: ${data.name}\\n📍 Loc: ${data.location}\\n🕒 Time: ${data.timestamp}\\n📷 Device: ${data.device_id}`\n        },\n        {\n            type: 'image',\n            originalContentUrl: data.image_url,\n            previewImageUrl: data.image_url\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 700,
+        "wires": [
+            [
+                "line_api_req"
+            ]
+        ]
+    },
+    {
+        "id": "format_line_u2",
+        "type": "function",
+        "z": "0fcc97ccaa6838e6",
+        "name": "User: Family 1",
+        "func": "const LINE_USER_ID = env.get(\"LINE_FAMILY1_USER_ID\") || \"\";\nconst LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + LINE_TOKEN\n};\n\nvar data = msg.payload;\n\nmsg.payload = {\n    to: LINE_USER_ID,\n    messages: [\n        {\n            type: 'text',\n            text: `⚠️ ALERT: FALL DETECTED\\n👤 Name: ${data.name}\\n📍 Loc: ${data.location}\\n🕒 Time: ${data.timestamp}\\n📷 Device: ${data.device_id}`\n        },\n        {\n            type: 'image',\n            originalContentUrl: data.image_url,\n            previewImageUrl: data.image_url\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 760,
+        "wires": [
+            [
+                "line_api_req"
+            ]
+        ]
+    },
+    {
+        "id": "format_line_u3",
+        "type": "function",
+        "z": "0fcc97ccaa6838e6",
+        "name": "User: Family 2",
+        "func": "const LINE_USER_ID = env.get(\"LINE_FAMILY2_USER_ID\") || \"\";\nconst LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + LINE_TOKEN\n};\n\nvar data = msg.payload;\n\nmsg.payload = {\n    to: LINE_USER_ID,\n    messages: [\n        {\n            type: 'text',\n            text: `⚠️ ALERT: FALL DETECTED\\n👤 Name: ${data.name}\\n📍 Loc: ${data.location}\\n🕒 Time: ${data.timestamp}\\n📷 Device: ${data.device_id}`\n        },\n        {\n            type: 'image',\n            originalContentUrl: data.image_url,\n            previewImageUrl: data.image_url\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 820,
+        "wires": [
+            [
+                "line_api_req"
+            ]
+        ]
+    },
+    {
+        "id": "line_api_req",
+        "type": "http request",
+        "z": "0fcc97ccaa6838e6",
+        "name": "Push to Line",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.line.me/v2/bot/message/push",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1210,
+        "y": 760,
+        "wires": [
+            [
+                "debug_line_resp"
+            ]
+        ]
+    },
+    {
+        "id": "debug_line_resp",
+        "type": "debug",
+        "z": "0fcc97ccaa6838e6",
+        "name": "Line Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1390,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "1171276bf3018b87",
+        "type": "json",
+        "z": "149afda867eafae3",
+        "name": "Parse Gait JSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 670,
+        "y": 740,
+        "wires": [
+            [
+                "04c7164b72b9f98f",
+                "ddc842f0187e4e9b",
+                "6c3216fccc714403",
+                "810f8f77fd951f4c",
+                "a1bad19ef6b39b40"
+            ]
+        ]
+    },
+    {
+        "id": "bba8d677b954bee9",
+        "type": "mqtt in",
+        "z": "149afda867eafae3",
+        "name": "MQTT Input (gait)",
+        "topic": "gait/data",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt_broker_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 460,
+        "y": 740,
+        "wires": [
+            [
+                "1171276bf3018b87"
+            ]
+        ]
+    },
+    {
+        "id": "04c7164b72b9f98f",
+        "type": "function",
+        "z": "149afda867eafae3",
+        "name": "Add Timestamp",
+        "func": "var now = new Date();\nmsg.payload.server_timestamp = now;\nmsg.payload.local_time = now.toLocaleString(\"zh-TW\", {\n    timeZone: \"Asia/Taipei\",\n    hour12: false\n});\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 800,
+        "wires": [
+            [
+                "c1cdafa2d9a15fb0"
+            ]
+        ]
+    },
+    {
+        "id": "c1cdafa2d9a15fb0",
+        "type": "mongodb out",
+        "z": "149afda867eafae3",
+        "mongodb": "mongo_config_local",
+        "name": "Save to MongoDB",
+        "collection": "gait_logs",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 1150,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "ddc842f0187e4e9b",
+        "type": "change",
+        "z": "149afda867eafae3",
+        "name": "Get Gait Score",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.gait_score",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 560,
+        "wires": [
+            [
+                "1453d8939e64c62e"
+            ]
+        ]
+    },
+    {
+        "id": "6c3216fccc714403",
+        "type": "change",
+        "z": "149afda867eafae3",
+        "name": "Get Balance",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.balance",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 620,
+        "wires": [
+            [
+                "2f17fe5181fe2691"
+            ]
+        ]
+    },
+    {
+        "id": "810f8f77fd951f4c",
+        "type": "change",
+        "z": "149afda867eafae3",
+        "name": "Get Activity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.activity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 680,
+        "wires": [
+            [
+                "0e10ce03e0f00795"
+            ]
+        ]
+    },
+    {
+        "id": "1453d8939e64c62e",
+        "type": "ui_chart",
+        "z": "149afda867eafae3",
+        "name": "Gait Score Chart",
+        "group": "cbec0d2af6e0ee97",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Gait Score (Health)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1150,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2f17fe5181fe2691",
+        "type": "ui_gauge",
+        "z": "149afda867eafae3",
+        "name": "Balance Gauge",
+        "group": "cbec0d2af6e0ee97",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Balance Score",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "0.3",
+        "seg2": "0.7",
+        "diff": false,
+        "className": "",
+        "x": 1140,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "0e10ce03e0f00795",
+        "type": "ui_chart",
+        "z": "149afda867eafae3",
+        "name": "Activity Chart",
+        "group": "cbec0d2af6e0ee97",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "Activity Level",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "200",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff9896",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1bad19ef6b39b40",
+        "type": "ui_text",
+        "z": "149afda867eafae3",
+        "group": "cbec0d2af6e0ee97",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "Current State Text",
+        "label": "Current State:",
+        "format": "{{msg.payload.state}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1150,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "57896f50c953fd90",
+        "type": "inject",
+        "z": "8e8eac399dac53ab",
+        "g": "a41f143a12bdb7ad",
+        "name": "Start Generator",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "8dcbb2cc63ef172a"
+            ]
+        ]
+    },
+    {
+        "id": "8dcbb2cc63ef172a",
+        "type": "function",
+        "z": "8e8eac399dac53ab",
+        "g": "a41f143a12bdb7ad",
+        "name": "Generate Full-Day Telemetry",
+        "func": "var startStr = \"2025-12-25T08:00:00+08:00\";\nvar endStr   = \"2025-12-25T22:00:00+08:00\";\nvar currentTime = new Date(startStr).getTime();\nvar endTime = new Date(endStr).getTime();\nvar anomalyTime = new Date(\"2025-12-25T16:30:00+08:00\").getTime();\n\nvar dataBatch = [];\nvar currentState = \"Sitting\";\nvar nextGapTime = currentTime + rnd(30, 60) * 60 * 1000;\n\nfunction rnd(min, max) { return Math.random() * (max - min) + min; }\n\nwhile (currentTime <= endTime) {\n    if (currentTime >= nextGapTime) {\n        var gapDuration = rnd(5, 15) * 60 * 1000;\n        currentTime += gapDuration;\n        nextGapTime = currentTime + rnd(45, 90) * 60 * 1000;\n        continue;\n    }\n\n    if (Math.random() < 0.01) {\n        currentState = (currentState === \"Sitting\") ? \"Walking\" : \"Sitting\";\n    }\n\n    var gait = 0, balance = 0, activity = 0;\n    var stateLabel = currentState;\n\n    if (currentTime >= anomalyTime && currentTime < (anomalyTime + 10000)) {\n        gait = rnd(55, 60);\n        balance = rnd(0.5, 0.6);\n        activity = rnd(80, 120);\n        stateLabel = \"Unstable\";\n    } else {\n        if (currentState === \"Sitting\") {\n            gait = rnd(95, 100);\n            balance = rnd(0.95, 1.0);\n            activity = rnd(5, 20);\n        } else {\n            gait = rnd(85, 98);\n            balance = rnd(0.8, 0.95);\n            activity = rnd(50, 150);\n        }\n    }\n\n    var tsObj = new Date(currentTime);\n    var localStr = tsObj.toLocaleString(\"zh-TW\", {timeZone: \"Asia/Taipei\", hour12: false});\n\n    dataBatch.push({\n        user_id: \"U002\",\n        gait_score: parseFloat(gait.toFixed(1)),\n        balance: parseFloat(balance.toFixed(2)),\n        activity: parseFloat(activity.toFixed(1)),\n        sway: parseFloat(rnd(2, 10).toFixed(1)),\n        state: stateLabel,\n        location: \"Living Room\",\n        server_timestamp: tsObj,\n        local_time: localStr\n    });\n\n    currentTime += 1000;\n}\n\nmsg.payload = dataBatch;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "43090241cf1b2317"
+            ]
+        ]
+    },
+    {
+        "id": "43090241cf1b2317",
+        "type": "split",
+        "z": "8e8eac399dac53ab",
+        "g": "a41f143a12bdb7ad",
+        "name": "Split Array",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [
+                "0b310d30db600533"
+            ]
+        ]
+    },
+    {
+        "id": "0b310d30db600533",
+        "type": "mongodb out",
+        "z": "8e8eac399dac53ab",
+        "g": "a41f143a12bdb7ad",
+        "mongodb": "mongo_config_local",
+        "name": "Save Generated Logs",
+        "collection": "gait_logs",
+        "payonly": true,
+        "upsert": false,
+        "multi": false,
+        "operation": "insert",
+        "x": 770,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "94ffeadcb61f603c",
+        "type": "http in",
+        "z": "711aa1fa1f1568ea",
+        "name": "LINE Webhook",
+        "url": "/callback",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 620,
+        "wires": [
+            [
+                "c04969f5dda9dad2"
+            ]
+        ]
+    },
+    {
+        "id": "c04969f5dda9dad2",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Router (Text/Postback)",
+        "func": "var event = msg.payload.events[0];\nif (!event || !event.replyToken) return null;\nmsg.replyToken = event.replyToken;\n\nif (event.type === 'postback') {\n    if (event.postback.params && event.postback.params.date) {\n        msg.queryDate = event.postback.params.date;\n        return [msg, null, null];\n    }\n    if (event.postback.data && event.postback.data.indexOf(\"date=\") === 0) {\n        msg.queryDate = event.postback.data.split('=')[1];\n        return [msg, null, null];\n    }\n}\n\nif (event.type === 'message' && event.message.type === 'text') {\n    var text = event.message.text.trim().toLowerCase();\n    if (text === \"menu\" || text === \"查詢\" || text === \"help\") {\n        return [null, null, msg];\n    }\n    var dateRegex = /^\\d{4}-\\d{2}-\\d{2}$/;\n    if (dateRegex.test(event.message.text.trim())) {\n        msg.queryDate = event.message.text.trim();\n        return [msg, null, null];\n    }\n    msg.payload = \"Please type 'Menu' to select a date.\";\n    return [null, msg, null];\n}\nreturn null;",
+        "outputs": 3,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 620,
+        "wires": [
+            [
+                "99d0d7d177634acc"
+            ],
+            [
+                "11ce28590e4de575"
+            ],
+            [
+                "8db5a7b39af4f48c"
+            ]
+        ]
+    },
+    {
+        "id": "99d0d7d177634acc",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Build Mongo Query",
+        "func": "var dateStr = msg.queryDate;\nvar startISO = dateStr + \"T00:00:00.000+08:00\";\nvar endISO   = dateStr + \"T23:59:59.999+08:00\";\n\nmsg.payload = {\n    \"server_timestamp\": {\n        \"$gte\": new Date(startISO),\n        \"$lte\": new Date(endISO)\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 520,
+        "wires": [
+            [
+                "fe713a09a49ab508"
+            ]
+        ]
+    },
+    {
+        "id": "fe713a09a49ab508",
+        "type": "mongodb in",
+        "z": "711aa1fa1f1568ea",
+        "mongodb": "mongo_config_local",
+        "name": "Query Logs",
+        "collection": "gait_logs",
+        "operation": "find",
+        "x": 570,
+        "y": 520,
+        "wires": [
+            [
+                "ee9107d4b1202d34"
+            ]
+        ]
+    },
+    {
+        "id": "ee9107d4b1202d34",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Process & Config",
+        "func": "var data = msg.payload;\nif (!data || data.length === 0) {\n    msg.payload = \"No records found for \" + msg.queryDate;\n    return [null, msg, null];\n}\n\nvar buckets = {};\nvar labels = [], gait = [], bal = [], act = [];\n\ndata.forEach(function(item) {\n    var d = new Date(item.server_timestamp);\n    var m = Math.floor(d.getMinutes() / 5) * 5;\n    var key = d.getHours() + \":\" + (\"0\" + m).slice(-2);\n    if (!buckets[key]) buckets[key] = {c:0, g:0, b:0, a:0};\n    buckets[key].c++;\n    buckets[key].g += item.gait_score;\n    buckets[key].b += item.balance;\n    buckets[key].a += item.activity;\n});\n\nObject.keys(buckets).sort(function(a,b){\n    return parseInt(a.replace(':','')) - parseInt(b.replace(':',''));\n}).forEach(function(key){\n    var b = buckets[key];\n    labels.push(key);\n    gait.push((b.g/b.c).toFixed(1));\n    bal.push(((b.b/b.c)*100).toFixed(1));\n    act.push((b.a/b.c).toFixed(1));\n});\n\nmsg.payload = {\n    chart: {\n        type: 'line',\n        data: {\n            labels: labels,\n            datasets: [\n                { label: 'Gait', data: gait, borderColor: 'green', fill: false, yAxisID:'y1', pointRadius:0, lineTension:0.4 },\n                { label: 'Balance', data: bal, borderColor: 'red', fill: false, borderDash:[5,5], yAxisID:'y1', pointRadius:0, lineTension:0.4 },\n                { label: 'Activity', data: act, borderColor: 'blue', fill: true, backgroundColor:'rgba(0,0,255,0.1)', yAxisID:'y2', pointRadius:0, lineTension:0.4 }\n            ]\n        },\n        options: {\n            title: { display: true, text: msg.queryDate + ' Gait Report', fontSize: 18 },\n            legend: { position: 'bottom' },\n            scales: {\n                yAxes: [\n                    { id: 'y1', position:'left', ticks:{min:0, max:100} },\n                    { id: 'y2', position:'right', gridLines:{display:false} }\n                ]\n            }\n        }\n    },\n    width: 800,\n    height: 500,\n    format: 'png',\n    backgroundColor: 'white'\n};\nreturn [msg, null, null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 520,
+        "wires": [
+            [
+                "d965f8f94e4e0f3d"
+            ],
+            [
+                "11ce28590e4de575"
+            ]
+        ]
+    },
+    {
+        "id": "d965f8f94e4e0f3d",
+        "type": "http request",
+        "z": "711aa1fa1f1568ea",
+        "name": "QuickChart API",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://quickchart.io/chart/create",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1000,
+        "y": 520,
+        "wires": [
+            [
+                "96d93891e414a86c"
+            ]
+        ]
+    },
+    {
+        "id": "96d93891e414a86c",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Prep Image Msg",
+        "func": "var imgUrl = msg.payload.url;\nconst LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + LINE_TOKEN\n};\n\nmsg.payload = {\n    \"replyToken\": msg.replyToken,\n    \"messages\": [\n        {\n            \"type\": \"image\",\n            \"originalContentUrl\": imgUrl,\n            \"previewImageUrl\": imgUrl\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 520,
+        "wires": [
+            [
+                "2e8e9d86e3b76131"
+            ]
+        ]
+    },
+    {
+        "id": "11ce28590e4de575",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Prep Text Msg",
+        "func": "var text = msg.payload;\nconst LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + LINE_TOKEN\n};\n\nmsg.payload = {\n    \"replyToken\": msg.replyToken,\n    \"messages\": [\n        {\n            \"type\": \"text\",\n            \"text\": text\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 620,
+        "wires": [
+            [
+                "2e8e9d86e3b76131"
+            ]
+        ]
+    },
+    {
+        "id": "8db5a7b39af4f48c",
+        "type": "function",
+        "z": "711aa1fa1f1568ea",
+        "name": "Prep Date Picker",
+        "func": "const LINE_TOKEN = env.get(\"LINE_CHANNEL_ACCESS_TOKEN\") || \"\";\n\nmsg.headers = {\n    \"Content-Type\": \"application/json\",\n    \"Authorization\": \"Bearer \" + LINE_TOKEN\n};\n\nvar d = new Date();\nvar yyyy = d.getFullYear();\nvar mm = (\"0\" + (d.getMonth() + 1)).slice(-2);\nvar dd = (\"0\" + d.getDate()).slice(-2);\nvar todayStr = yyyy + \"-\" + mm + \"-\" + dd;\nvar todayLabel = mm + \"/\" + dd;\n\nmsg.payload = {\n    \"replyToken\": msg.replyToken,\n    \"messages\": [\n        {\n            \"type\": \"template\",\n            \"altText\": \"Please select a date\",\n            \"template\": {\n                \"type\": \"buttons\",\n                \"text\": \"📊 Gait Analysis\\nPlease select data to view:\",\n                \"actions\": [\n                    {\n                        \"type\": \"postback\",\n                        \"label\": \"Today (\" + todayLabel + \")\",\n                        \"data\": \"date=\" + todayStr\n                    },\n                    {\n                        \"type\": \"postback\",\n                        \"label\": \"🎄 12/25\",\n                        \"data\": \"date=2025-12-25\"\n                    },\n                    {\n                        \"type\": \"datetimepicker\",\n                        \"label\": \"🔍 Select Other Date\",\n                        \"data\": \"action=select_date\",\n                        \"mode\": \"date\"\n                    }\n                ]\n            }\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 700,
+        "wires": [
+            [
+                "2e8e9d86e3b76131"
+            ]
+        ]
+    },
+    {
+        "id": "2e8e9d86e3b76131",
+        "type": "http request",
+        "z": "711aa1fa1f1568ea",
+        "name": "LINE Reply API",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1400,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    }
+]
