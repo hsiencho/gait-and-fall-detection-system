@@ -70,6 +70,10 @@ The system adopts a hybrid edge-cloud architecture:
   </tr>
 </table>
 
+### Live Detection Demo
+
+<!-- Edit this file on GitHub and drag your .mp4 here; a video URL will be generated automatically. -->
+
 ### Node-RED Workflow
 
 **Node-RED System Workflow**
