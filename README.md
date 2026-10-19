@@ -1,7 +1,3 @@
-
-
-https://github.com/user-attachments/assets/29b972ca-c276-49e4-a76d-6563f23d2493
-
 # Smart Gait Analysis & Fall Warning System (Gait AI)
 
 [![Python Version](https://img.shields.io/badge/Python-3.8.0-blue.svg)](https://www.python.org/)
