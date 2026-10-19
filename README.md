@@ -1,6 +1,5 @@
 # Smart Gait Analysis & Fall Warning System (Gait AI)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/Python-3.8.0-blue.svg)](https://www.python.org/)
 [![Node-RED](https://img.shields.io/badge/Node--RED-v2.2.2-red.svg)](https://nodered.org/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Pose-green.svg)](https://developers.google.com/mediapipe)
@@ -20,7 +19,6 @@ An AIoT-driven, non-contact elderly monitoring system deployed on edge devices (
 - [Environment Variables](#environment-variables)
 - [Node-RED & Database Setup](#node-red--database-setup)
 - [Running the System](#running-the-system)
-- [License](#license)
 
 ---
 
@@ -225,9 +223,3 @@ python pose_detector.py --source /path/to/your/video.mp4
 ```bash
 python line_webhook.py --port 1800
 ```
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
