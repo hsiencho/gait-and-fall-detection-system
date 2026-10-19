@@ -55,18 +55,18 @@ The system adopts a hybrid edge-cloud architecture:
 
 ### Monitoring & Notification Overview
 
-<table>
+<table width="800">
   <tr>
     <td align="center" valign="bottom">
-      <img src="assets/results_fall_alert.png" alt="Fall Alert (LINE Push)" height="492"><br>
+      <img src="assets/results_fall_alert.png" alt="Fall Alert (LINE Push)" height="440"><br>
       <b>Fall Alert (LINE Push)</b>
     </td>
     <td align="center" valign="bottom">
-      <img src="assets/results_gait_analysis.png" alt="Gait Analysis (LINE Reply)" height="492"><br>
+      <img src="assets/results_gait_analysis.png" alt="Gait Analysis (LINE Reply)" height="440"><br>
       <b>Gait Analysis (LINE Reply)</b>
     </td>
     <td align="center" valign="bottom">
-      <img src="assets/results_dashboard.png" alt="Dashboard (Node-RED)" height="492"><br>
+      <img src="assets/results_dashboard.png" alt="Dashboard (Node-RED)" height="440"><br>
       <b>Dashboard (Node-RED)</b>
     </td>
   </tr>
